@@ -37,7 +37,9 @@ I want to make it simple, fast, and more accessible for beginners in visual cont
 
 ### Youtube Studio Face blur and Custom Blur:
 
-will automatically blur the object as it moves.
+For face blur: Youtube Studio breaks up videos into frames and detecting faces on each frame individually. Once it has detected the faces in each frame of the video, it will start matching face detections within a single scene of the video, relying on both the visual characteristics of the face as well as the face’s motion.
+
+For Custom Blur: after the user dragging a certain region over an object, it will automatically blur the object as it moves.
 
 select the faces that you'd like to blur, then click Apply.
 
@@ -49,6 +51,12 @@ Object Selection tool automatically selects the object inside the defined region
 
 ### Smartphone's portrait mode:
 
+For iPhone: it uses the phone's dual cameras and Apple's software to mimic the quality you would get from a DSLR camera. One lens capturing the actual image, the other capturing data to create a nine-layer depth map. 
+
+For Pixel 2: it utilizes pixel splitting to create a depth map and machine learning helps to identify the subject and create a mask. 
+
+Most of the smartphone's portrait mode approaches involve instance segmentation or extra hardware to extract data and achieve object detection.
+
 ### My Approach -- YOLO(You Only Look Once) with OpenCV libraries:
 
 YOLO was designed by Joseph Redmon, Santosh Divvala, Ross Girshick, and Ali Farhadi. It splits the input image into a set of grid cells with each grid cell has associated vector that would tell if an object exists in the grid cell, the class of the object(i.e car or person) and the predicted bounding box for that object.
@@ -57,7 +65,8 @@ YOLO was designed by Joseph Redmon, Santosh Divvala, Ross Girshick, and Ali Farh
 
 Although YOLO is less accurate than Mask R CNN and other existing methods with instance segmentation, it is way faster and way less demanding than Mask R CNN because it only reads through the image once, so I believe YOLO is the ideal algorithm for approaching the problems.
 
-(I need to find out why I use OpenCV)
+I use OpenCV for similar reason: it's fast, simple and effecient. OpenCV can achieve around 30 fps in real time processing compared to 4-5 fps from Matlab, and it does not use much RAM for real time applications, so even if the user is on a low budget and using a computer that does not have a good GPU. 
+
 
 ## My Implementation and Results
 
