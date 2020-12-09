@@ -8,9 +8,8 @@ University of Wisconsin Madison
 
 liu763g@wisc.edu
 
-You can use the [editor on GitHub](https://github.com/yliuEmma/CS639FALL20website/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Initial Project Proposal
 
 [project proposal](https://yliuemma.github.io/CS639FALL20website/CS_639_Project_Proposal.pdf)
 
