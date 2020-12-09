@@ -41,8 +41,6 @@ For face blur: Youtube Studio breaks up videos into frames and detecting faces o
 
 For Custom Blur: after the user dragging a certain region over an object, it will automatically blur the object as it moves.
 
-select the faces that you'd like to blur, then click Apply.
-
 ### Photoshop object selection tool:
 
 draw a rectangular region or a lasso around the object.
@@ -55,7 +53,7 @@ For iPhone: it uses the phone's dual cameras and Apple's software to mimic the q
 
 For Pixel 2: it utilizes pixel splitting to create a depth map and machine learning helps to identify the subject and create a mask. 
 
-Most of the smartphone's portrait mode approaches involve instance segmentation or extra hardware to extract data and achieve object detection.
+Most of the smartphone's portrait mode approaches involve instance segmentation or extra hardware to extract data and achieve object detection. Instance segmentation like Mask R CNN and depth maps usually have high demand on hardware, especially GPU, because they need to split up the image and read through the image multiple times. The ideal approach for beginning visual content creators should be fast, simple, and less expensive.
 
 ### My Approach -- YOLO(You Only Look Once) with OpenCV libraries:
 
