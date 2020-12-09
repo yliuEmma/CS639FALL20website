@@ -51,19 +51,38 @@ Object Selection tool automatically selects the object inside the defined region
 
 ### My Approach -- YOLO(You Only Look Once) with OpenCV libraries:
 
+YOLO was designed by Joseph Redmon, Santosh Divvala, Ross Girshick, and Ali Farhadi. It splits the input image into a set of grid cells with each grid cell has associated vector that would tell if an object exists in the grid cell, the class of the object(i.e car or person) and the predicted bounding box for that object.
+
+![yoloprocess](https://miro.medium.com/max/1152/1*m8p5lhWdFDdapEFa2zUtIA.jpeg)
+
+Although YOLO is less accurate than Mask R CNN and other existing methods with instance segmentation, it is way faster and way less demanding than Mask R CNN because it only reads through the image once, so I believe YOLO is the ideal algorithm for approaching the problems.
+
+(I need to find out why I use OpenCV)
+
 ## My Implementation and Results
 
 ### My Implementation
 
 ### Results
 
+
 ## Discussion and References
 
 ### Discussion
+Obviously I learned about YOLO and OpenCV, and I integrated image processing methods that I learned from CS639. 
+
+I also learned the pros and cons of my approach:
+  Pros: It's definitely fast and simple to use. I shared it with my friends who are studying communication arts and they were happy to use it on their finals. One of them is using my program to blur out non-participants in a video recording of a BLM protest that happened on State Street this year.
+  Cons: However, it is also essentially less accurate since it splits images into grids instead of instance segmentation. The most you can get from it are the bounding boxes, but you can't really do it on a pixel level with YOLO alone.
+
+In the future I am planning to implement this approach to be both fast and more accurate than just bounding boxes. I am considering applying instance segmentation inside bounding box regions instead of doing it on the whole picture, so you only get to read the bounding boxes multiple times. I hope this instance segmentation at smaller scale would speed up the process and keep the accuracy. I will refer to similar approaches, such as YolAct or Poly-YOLO.
+
 
 ### References
 
-Joseph Redmon, Santosh Divvala, Ross Girshick, and Ali Farhadi. You only look once: Unified,real-time object detection. In Proceedings of the IEEE conference on computer vision and pattern recognition, pp. 779–788, 2016.
+Bolya, Daniel, et al. "Yolact: Real-time instance segmentation." Proceedings of the IEEE international conference on computer vision. 2019.
+
+Redmon, Joseph, et al. "You only look once: Unified, real-time object detection." Proceedings of the IEEE conference on computer vision and pattern recognition. 2016.
 
 Khoja, Nadya. “14 Visual Content Marketing Statistics to Know for 2020 [Infographic].” Venngage, 11 Mar. 2020, venngage.com/blog/visual-content-marketing-statistics/.
 
