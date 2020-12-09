@@ -1,9 +1,13 @@
 # Object Detection and Image Processing for Visual Content Creation
 
 Emma Liu
+
 Department of Computer Science
+
 University of Wisconsin Madison 
-fliu763g@wisc.edu
+
+liu763g@wisc.edu
+
 You can use the [editor on GitHub](https://github.com/yliuEmma/CS639FALL20website/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
