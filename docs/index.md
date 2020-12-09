@@ -6,7 +6,7 @@ Department of Computer Science
 
 University of Wisconsin Madison 
 
-liu763g@wisc.edu
+liu763@wisc.edu
 
 
 ## Initial Project Proposal
@@ -19,7 +19,10 @@ liu763g@wisc.edu
 
 ## Motivation
 
-![image](https://s3.amazonaws.com/thumbnails.venngage.com/template/b93f660f-5460-40f6-9952-ff7d150dac21.png)
+Visual content creation has become wildly applied in many industries. 
+
+![chart1](https://s3.amazonaws.com/thumbnails.venngage.com/template/b93f660f-5460-40f6-9952-ff7d150dac21.png)
+![chart2](https://venngage-wordpress.s3.amazonaws.com/uploads/2020/03/Visual-Content-Marketing-Statistics-4.png)
 
 ## Current State-of-Art and My Approach
 
