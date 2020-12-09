@@ -13,34 +13,30 @@ liu763g@wisc.edu
 
 [project proposal](https://yliuemma.github.io/CS639FALL20website/CS_639_Project_Proposal.pdf)
 
-### Markdown
+## Midterm Progress Report
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+[Midterm Progress report](https://yliuemma.github.io/CS639FALL20website/COMP_SCI_639_Midterm_Progress_Report.pdf)
 
-```markdown
-Syntax highlighted code block
+## Problem Statement and Importance
 
-# Header 1
-## Header 2
-### Header 3
+### Problem Statement
 
-- Bulleted
-- List
+### Importance
 
-1. Numbered
-2. List
+## Current State-of-Art and My Approach
 
-**Bold** and _Italic_ and `Code` text
+### Current State-of-Art
 
-[Link](url) and ![Image](src)
-```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
+## My Implementation and Results
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/yliuEmma/CS639FALL20website/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### My Implementation
 
-### Support or Contact
+### Results
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+## Discussion and References
+
+### Discussion
+
+### References
