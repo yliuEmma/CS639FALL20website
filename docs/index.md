@@ -6,7 +6,7 @@ Department of Computer Science
 
 University of Wisconsin Madison 
 
-liu763g@wisc.edu
+liu763@wisc.edu
 
 
 ## Initial Project Proposal
