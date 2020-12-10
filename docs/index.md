@@ -46,7 +46,7 @@ For Custom Blur: after the user dragging a certain region over an object, it wil
 
 The user would draw a rectangular region or a lasso around the object, and object Selection tool automatically selects the object inside the defined region. The tool works better on well-defined objects than on regions without contrast. So the user still needs to process multiple objects through manual labor and it does not work well in areas with low contrast. It also does not work on videos.
 
-![obtool](https://yliuemma.github.io/CS639FALL20website/Photoshop-Object-selection-Hero-new.gif)
+![obtool](https://yliuemma.github.io/CS639FALL20website/ps_obtool.gif)
 
 ### Smartphone's portrait mode:
 
