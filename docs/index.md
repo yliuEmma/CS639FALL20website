@@ -19,15 +19,9 @@ liu763@wisc.edu
 
 ## Motivation
 
-Visual content creation has become wildly applied in many industries. 
-However, Manual image processing of recurring objects of choice from a massive amount of digital media
-can be very tedious for the visual content creation process. Automated object detection and image
-processing can free visual content creators from doing repetitive tasks, such as blurring out the same
-object that occurs in a video, and allow them to focus more on the creative process.
-
+Visual content creation has become widely applied in many industries. However, Manual image processing of recurring objects of choice from a massive amount of digital media can be very tedious for the visual content creation process. Automated object detection and image processing can free visual content creators from doing repetitive tasks, such as blurring out the same object that occurs in a video, and allow them to focus more on the creative process.
 
 ![chart1](https://s3.amazonaws.com/thumbnails.venngage.com/template/b93f660f-5460-40f6-9952-ff7d150dac21.png)
-![chart2](https://venngage-wordpress.s3.amazonaws.com/uploads/2020/03/Visual-Content-Marketing-Statistics-4.png)
 
 Instead of manually adjusting each object in the image, I would like to automate this process and allow content creators to focus more on the creative process through object detection and image processing.
 
@@ -115,6 +109,7 @@ The YOLO uses Non-Maximal Suppression to eliminate extra bounding boxes that do 
 For images, the user would need to enter the path name of the image that they want to process, the type of object, and desired processing( m for mark out with a labeled bounding box, b for blur, s for sticker). If there is an object detected with a label that matches user's desired object, it will apply user's desired way of processing. If there is no object detected that matches the user's desired object, the program would do nothing with the image. 
 
 For blurring objects in images and videos, I extract the coordinates of 4 corners of the bounding box and use them as ROI(Region of Interest) to create masks for blurring process.
+(w and h are weights and heights extracted from bounding boxes)
 
 ```markdown
 `roi_corners = np.array([[(x, y), (x + w, y), (x + w, y + h), (x, y + h)]], dtype=np.int32)`
@@ -127,7 +122,7 @@ I prepare a blur on the whole image before adding up the masks. The blur I used 
 ```
 I used bitwise_and to add up the original image, the blurred image, and the masks created by the bounding boxes.
 
-For adding stickers on the objects, since I would like to integrate the sticker image's alpha channel to make the sticker smoothly overlay on the original image, I require the user to use png files because they have alpha channels. I resize the sticker image according to the bounding box of the object with interpolation = cv2.INTER_ARE:
+For adding stickers on the objects, since I would like to integrate the sticker image's alpha channel to make the sticker smoothly overlay on the original image, I require the user to use png files because they have alpha channels. I resize the sticker image according to the bounding box of the object with interpolation = cv2.INTER_AREA:
 
 ```markdown
 `sticker = cv2.resize(sticker, (w,h), interpolation = cv2.INTER_AREA)`
@@ -140,8 +135,7 @@ However, the original image that is fed into the neuro network might not be png,
 alpha_image = 1.0 - alpha_sticker`
 ```
 
-Because the sticker image is applied as a hard sticker, weighted blending is not necessary. 
-
+Because the sticker image is applied as a hard sticker, weighted blending is not necessary. I use direct matrix addition to add the resized sticker on the areas where the bounding boxes are in an iteration to go through the original image's channels.
 
 ### Results
 
