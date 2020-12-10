@@ -106,7 +106,7 @@ The confidence threshold that I specified is 0.5. Any object detected with confi
 
 The YOLO uses Non-Maximal Suppression to eliminate extra bounding boxes that do not have highest confidence value and have a high IoU (Intersection over Union) value(which can be explained by the image below). I use 0.5 as IoU threshold to eliminate boxes with IoU lower than this value. Additionally, I also use 0.5 as a score threshold to eliminate extra boxes that contains confidence score lower than 0.5.
 
-(image place holder)
+![iou](https://yliuemma.github.io/CS639FALL20website/iou.png)
 
 ```markdown
 `idxs = cv2.dnn.NMSBoxes(boxes, confidences, SCORE_THRESH, IOU_THRESH)`
