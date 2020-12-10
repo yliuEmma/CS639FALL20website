@@ -142,6 +142,26 @@ Because the sticker image is applied as a hard sticker, weighted blending is not
 
 ### Results
 
+For images: 
+
+I used the image from https://news.wisc.edu/surge-covid-19-testing-offered-at-nielsen-tennis-stadium/ as original image:
+![ogimg](https://yliuemma.github.io/CS639FALL20website/UWTEST.jpg)
+
+If I choose to mark out chairs in the image with bounding boxes, I would get this result:
+![chairm](https://yliuemma.github.io/CS639FALL20website/UWTESTchairm_yolo3.jpg)
+
+And if I choose to mark out people in the image with bounding boxes, I would get similar result:
+![personm](https://yliuemma.github.io/CS639FALL20website/UWTESTperson_yolo3.jpg)
+
+If I choose to blur the people in the image, I would get this result:
+![personb](https://yliuemma.github.io/CS639FALL20website/UWTESTpersonb_yolo3.jpg)
+
+If I choose to apply an image of kirby as sticker:
+![kirby](https://yliuemma.github.io/CS639FALL20website/kirby2_sm.png)
+
+and apply the sticker on the chairs, I would get this result:
+![chairs](https://yliuemma.github.io/CS639FALL20website/UWTESTchairs_yolo3.jpg)
+
 
 ## Discussion and References
 
