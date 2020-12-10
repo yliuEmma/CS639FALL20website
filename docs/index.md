@@ -42,7 +42,7 @@ For Custom Blur: after the user dragging a certain region over an object, it wil
 
 ![customblur](https://yliuemma.github.io/CS639FALL20website/customblur.gif)
 
-### Photoshop object selection tool:
+### Adobe Photoshop object selection tool:
 
 The user would draw a rectangular region or a lasso around the object, and object Selection tool automatically selects the object inside the defined region. The tool works better on well-defined objects than on regions without contrast. So the user still needs to process multiple objects through manual labor and it does not work well in areas with low contrast. It also does not work on videos.
 
