@@ -8,7 +8,6 @@ University of Wisconsin Madison
 
 liu763@wisc.edu
 
-
 ## Initial Project Proposal
 
 [project proposal](https://yliuemma.github.io/CS639FALL20website/CS_639_Project_Proposal.pdf)
@@ -16,6 +15,13 @@ liu763@wisc.edu
 ## Midterm Progress Report
 
 [Midterm Progress report](https://yliuemma.github.io/CS639FALL20website/COMP_SCI_639_Midterm_Progress_Report.pdf)
+
+## Table of contents
+1. [Motivation](#motivation)
+2. [Current State-of-Art and My Approach](#current)
+3. [My Implementation and Results](#implementation)
+4. [Discussion](#discussion)
+5. [References](#references)
 
 ## Motivation
 
@@ -25,12 +31,12 @@ Visual content creation has become widely applied in many industries. However, m
 ![chart2](https://venngage-wordpress.s3.amazonaws.com/uploads/2020/03/Visual-Content-Marketing-Statistics-9.png)
 
 Visual content creation can be very difficult to pick up for non-professionals. Many of my friends studying Communication Art were intimidated by the complexity of Adobe Photoshop or Adobe AfterEffects when they first learned how to edit pictures or videos for their projects. 
-
+<a name="paragraph1"></a>
 Instead of manually adjusting each object in the image, I would like to automate this process and allow content creators to focus more on the creative process through object detection and image processing.
 
 I want to make it simple, fast, and more accessible for beginners in visual content creation or for those who do not have enough budget.
 
-## Current State-of-Art and My Approach
+## Current State-of-Art and My Approach <a name="current"></a>
 
 ### Youtube Studio Face blur and Custom Blur:
 
@@ -54,7 +60,7 @@ For iPhone: it uses the phone's dual cameras and Apple's software to mimic the q
 
 ![iPhone](https://yliuemma.github.io/CS639FALL20website/ios14-iphone-11pro-camera-portrait-mode.jpg)
 
-For Pixel 2: it utilizes pixel splitting to create a depth map and machine learning helps to identify the subject and create a mask. 
+For Pixel 2: it utilizes pixel splitting <a name="paragraph1"></a>to create a depth map and machine learning helps to identify the subject and create a mask. 
 
 ![pixel2](https://yliuemma.github.io/CS639FALL20website/orig-and-mask-comp-s.jpg) ![pixel22](https://yliuemma.github.io/CS639FALL20website/0132_20170801_154453_513-mask-only.jpg)
 
@@ -71,7 +77,7 @@ Although YOLO is less accurate than Mask R CNN and other existing methods with i
 I use OpenCV for similar reason: it's fast, simple and effecient. OpenCV can achieve around 30 fps in real time processing compared to 4-5 fps from Matlab, and it does not use much RAM for real time applications, so even if the user is on a low budget and using a computer that does not have a good GPU. 
 
 
-## My Implementation and Results
+## My Implementation and Results <a name="implementation"></a>
 
 ### My Implementation
 
@@ -170,10 +176,7 @@ I also tried similar process on other pictures:
 ![streetm](https://yliuemma.github.io/CS639FALL20website/streetpersonm_yolo3.jpg)
 ![streetb](https://yliuemma.github.io/CS639FALL20website/streetpersonb_yolo3.jpg)
 
-
-## Discussion and References
-
-### Discussion
+## Discussion
 Obviously I learned about YOLO and OpenCV, and I integrated image processing methods that I learned from CS639. 
 
 I also learned the pros and cons of my approach:
@@ -183,7 +186,7 @@ I also learned the pros and cons of my approach:
 In the future I am planning to implement this approach to be both fast and more accurate than just bounding boxes. I am considering applying instance segmentation inside bounding box regions instead of doing it on the whole picture, so you only get to read the bounding boxes multiple times. I hope this instance segmentation at smaller scale would speed up the process and keep the accuracy. I will refer to similar approaches, such as YolAct or Poly-YOLO.
 
 
-### References
+## References
 
 Bolya, Daniel, et al. "Yolact: Real-time instance segmentation." Proceedings of the IEEE international conference on computer vision. 2019.
 
