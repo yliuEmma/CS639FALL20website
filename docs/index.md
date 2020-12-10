@@ -162,6 +162,14 @@ If I choose to apply an image of kirby as sticker:
 and apply the sticker on the chairs, I would get this result:
 ![chairs](https://yliuemma.github.io/CS639FALL20website/UWTESTchairs_yolo3.jpg)
 
+The process of applying kirby on chairs as stickers only takes around 0.32 seconds, and other process also produce similar time result:
+
+![time](https://yliuemma.github.io/CS639FALL20website/timeTook.png)
+
+I also tried similar process on other pictures:
+![streetm](https://yliuemma.github.io/CS639FALL20website/streetpersonm_yolo3.jpg)
+![streetb](https://yliuemma.github.io/CS639FALL20website/streetpersonb_yolo3.jpg)
+
 
 ## Discussion and References
 
