@@ -16,6 +16,9 @@ liu763@wisc.edu
 
 [Midterm Progress report](https://yliuemma.github.io/CS639FALL20website/COMP_SCI_639_Midterm_Progress_Report.pdf)
 
+## Final Presentation
+[presentation](https://yliuemma.github.io/CS639FALL20website/CS639_Final.pptx)
+
 ## Table of contents
 1. [Motivation](#motivation)
 2. [Current State-of-Art and My Approach](#current)
