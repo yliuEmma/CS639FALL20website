@@ -218,7 +218,7 @@ I also learned the pros and cons of my approach:
   Pros: It's definitely fast and simple to use. I shared it with my friends who are studying communication arts and they were happy to use it on their finals. One of them is using my program to blur out non-participants in a video recording of a BLM protest that happened on State Street this year.
   Cons: However, it is also essentially less accurate since it splits images into grids instead of instance segmentation. The most you can get from it are the bounding boxes, but you can't really do it on a pixel level with YOLO alone.
 
-In the future I am planning to implement this approach to be both fast and more accurate than just bounding boxes. I am considering applying instance segmentation inside bounding box regions instead of doing it on the whole picture, so you only get to read the bounding boxes multiple times. I hope this instance segmentation at smaller scale would speed up the process and keep the accuracy. I will refer to similar approaches, such as YolAct or Poly-YOLO.
+In the future I am planning to implement this approach to be both fast and more accurate than just bounding boxes. I am considering applying instance segmentation inside bounding box regions instead of doing it on the whole picture, so you only get to read the bounding boxes multiple times. I hope this instance segmentation at smaller scale would speed up the process and keep the accuracy. I will refer to similar approaches, such as [YolAct](https://github.com/dbolya/yolact) or [Poly-YOLO](https://github.com/gladcolor/poly_yolo).
 
 
 ## References
