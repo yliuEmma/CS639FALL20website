@@ -141,7 +141,7 @@ I extract each bounding box coordinates(top left corner's coordinate), its width
 For marking objects in images and videos, I use cv2.rectangle() function to draw out uniquely colored boxes (I use numpy's random.randint() to generate random colors for each object every time a user run this program) and use OpenCV's addWeighted() to adjust box's transparency with an alpha value of 0.6 on the final image.
 
 For blurring objects in images and videos, I extract the coordinates of 4 corners of the bounding box and use them as ROI(Region of Interest) to create masks for blurring process.
-(w and h are weights and heights extracted from bounding boxes)
+(w and h are wdith and heights extracted from bounding boxes)
 
 ```markdown
 `roi_corners = np.array([[(x, y), (x + w, y), (x + w, y + h), (x, y + h)]], dtype=np.int32)`
@@ -211,6 +211,10 @@ If I choose to apply mark out people in the video, I would get this result:
 If I choose to apply blur on the people in the video, I would get this result:
 ![personb](https://yliuemma.github.io/CS639FALL20website/test-videooutpersonb.gif)
 
+With just using CPU, the average processing time for each frame is around 0.2 sec, about 5 fps in this implementation.
+
+I have also tried to detect objects in images and process them with PixelLib library that can load in Mask R Cnn model. The average processing time for an image running on the CPU is around 0.7.
+
 ## Discussion
 Obviously I learned about YOLO and OpenCV, and I integrated image processing methods that I learned from CS639. 
 
@@ -218,7 +222,9 @@ I also learned the pros and cons of my approach:
   Pros: It's definitely fast and simple to use. I shared it with my friends who are studying communication arts and they were happy to use it on their finals. One of them is using my program to blur out non-participants in a video recording of a BLM protest that happened on State Street this year.
   Cons: However, it is also essentially less accurate since it splits images into grids instead of instance segmentation. The most you can get from it are the bounding boxes, but you can't really do it on a pixel level with YOLO alone.
 
-In the future I am planning to implement this approach to be both fast and more accurate than just bounding boxes. I am considering applying instance segmentation inside bounding box regions instead of doing it on the whole picture, so you only get to read the bounding boxes multiple times. I hope this instance segmentation at smaller scale would speed up the process and keep the accuracy. I will refer to similar approaches, such as [YolAct](https://github.com/dbolya/yolact) or [Poly-YOLO](https://github.com/gladcolor/poly_yolo).
+In the future I am planning to implement this approach to be both fast and more accurate than just bounding boxes. I am considering applying instance segmentation inside bounding box regions instead of doing it on the whole picture, so you only get to read the bounding boxes multiple times. Taking the image that I use to mark/blur out people as an example, the time it took to record all people's bounding box is around 0.3 seconds, while feeding the image to PixelLib's Mask R Cnn model takes around 0.7 seconds(given that they all just run on CPU). The image's size is 515(height) x 775(width), and the total area of all bounding boxes(which can be easily obtained by adding up all extracted bouding box w x h) that contain detected person is around 5% of the total area of the image. If I apply Mask R Cnn or similar instance segmentation methods on those bounding boxes(detected by YOLO first) instead of applying Mask R Cnn on the full image, I assume the total time would be around 0.335, which is slightly slower than YOLO, but still faster than Mask R Cnn and more accurate than just YOLO. 
+
+I hope this instance segmentation at smaller scale would improve the accuracy. In the future, I will refer to similar approaches, such as [YolAct](https://github.com/dbolya/yolact) or [Poly-YOLO](https://github.com/gladcolor/poly_yolo).
 
 
 ## References
@@ -226,6 +232,8 @@ In the future I am planning to implement this approach to be both fast and more 
 Bolya, Daniel, et al. "Yolact: Real-time instance segmentation." Proceedings of the IEEE international conference on computer vision. 2019.
 
 “Portrait Mode on the Pixel 2 and Pixel 2 XL Smartphones.” Google AI Blog, 17 Oct. 2017, ai.googleblog.com/2017/10/portrait-mode-on-pixel-2-and-pixel-2-xl.html. 
+
+Hurtik, Petr, et al. "Poly-YOLO: higher speed, more precise detection and instance segmentation for YOLOv3." arXiv preprint arXiv:2005.13243 (2020).
 
 Khoja, Nadya. “14 Visual Content Marketing Statistics to Know for 2020 [Infographic].” Venngage, 11 Mar. 2020, venngage.com/blog/visual-content-marketing-statistics/.
 
