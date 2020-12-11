@@ -81,9 +81,13 @@ I use OpenCV for similar reason: it's fast, simple and effecient. OpenCV can ach
 
 ### My Implementation
 
-I applied YOLOv3's neuro network configuration along with pre-trained model weights from COCO dataset. 
+I applied YOLOv3's neuro network configuration along with pre-trained model weights from [Joseph Chet Redmon's website](https://pjreddie.com/darknet/yolo/). Instead of building YOLO from scratch, I use OpenCV's Deep Neural Networks(DNN) in Python to load in the YOLO neuro network from the configuration file and the weights file. The readNetFromDarknet() function in DNN returns an artificial neural network model based on the YOLO configuration file and weights file.
 
-For images, since I am using OpenCV libraries, the images need to prepared as a blob (4D numpy array containing image source, scale factor, size, and the option swapBR=True) before it is fed to the neuro network.
+```markdown
+`cv2.dnn.readNetFromDarknet() `
+```
+
+For images, since I am using OpenCV libraries, the images need to prepared as a blob (4D numpy array containing image source, scale factor, size, and the option swapBR=True) before it is fed to the neuro network. The blob generated from the image is the actual input that I feed to the YOLO neuro network.
 
 ```markdown
 
@@ -107,15 +111,31 @@ For all images/video frames I use 416x416 as their sizes to keep the consistency
 
 The confidence threshold that I specified is 0.5. Any object detected with confidence lower than 0.5 will be discarded by the neuro network as it process the image/video. I have tried 0.3 and 0.7 as confidence as well, but the results can be very odd. When confidence = 0.3, many objects would be mistakenly detected as something else. A dog that moves in a video can be detected as an elephant or a horse for a considerable amount of frames. When confidence = 0.7, objects that can be easily detected in 0.5 will be ignored by the neuro network. In a street photo, the people in the far distance would get ignored. So confidence = 0.5 is a good middle ground without producing significant errors.
 
+The bounding boxes are extracted by looping through each objects detected in each convolutional layer. The boxes with confidence score higher than my confidence threshold will be extracted and scaled relative to the size of the image. YOLO network itself returns the center coordinates of the bounding box followed by the boxes' width and height, so I calculated the bouding box's top left corner's coordinates from the datas produced by YOLO to make the later image processing easier, and store the calculated coordinates along with width and height in an array named boxes. I also stored each detected and not discarded result's confidence into an array named confidences and each label(type of object) into an array named class_id.
+
+The box's top left corner's coordinates are calculated as below:
+
+```markdown
+` x = int(centerX - (width / 2))
+  y = int(centerY - (height / 2))`
+```
+
 The YOLO uses Non-Maximal Suppression to eliminate extra bounding boxes that do not have highest confidence value and have a high IoU (Intersection over Union) value(which can be explained by the image below). I use 0.5 as IoU threshold to eliminate boxes with IoU lower than this value. Additionally, I also use 0.5 as a score threshold to eliminate extra boxes that contains confidence score lower than 0.5.
 
 ![iou](https://yliuemma.github.io/CS639FALL20website/iou.png)
 
+OpenCV's dnn library contains a function that can perform non maximum suppression:
+
 ```markdown
 `idxs = cv2.dnn.NMSBoxes(boxes, confidences, SCORE_THRESH, IOU_THRESH)`
 ```
+The idx stores all boxes after non maximum suppression.
 
-For images, the user would need to enter the path name of the image that they want to process, the type of object, and desired processing( m for mark out with a labeled bounding box, b for blur, s for sticker). If there is an object detected with a label that matches user's desired object, it will apply user's desired way of processing. If there is no object detected that matches the user's desired object, the program would do nothing with the image. 
+For images, the user would need to enter the path name of the image that they want to process, the type of object, and desired processing( m for mark out with a labeled bounding box, b for blur, s for sticker).  
+
+I extract each bounding box coordinates(top left corner's coordinate), its width and height, and its label from idx. If there is an object detected with a label that matches user's desired object, it will apply user's desired way of processing. If there is no object detected that matches the user's desired object, the program would do nothing with the image.
+
+For marking objects in images and videos, I use cv2.rectangle() function to draw out uniquely colored boxes (I use numpy's random.randint() to generate random colors for each object every time a user run this program) and use OpenCV's addWeighted() to adjust box's transparency with an alpha value of 0.6 on the final image.
 
 For blurring objects in images and videos, I extract the coordinates of 4 corners of the bounding box and use them as ROI(Region of Interest) to create masks for blurring process.
 (w and h are weights and heights extracted from bounding boxes)
@@ -175,6 +195,18 @@ The process of applying kirby on chairs as stickers only takes around 0.32 secon
 I also tried similar process on other pictures:
 ![streetm](https://yliuemma.github.io/CS639FALL20website/streetpersonm_yolo3.jpg)
 ![streetb](https://yliuemma.github.io/CS639FALL20website/streetpersonb_yolo3.jpg)
+
+For video:
+
+I used a clip from: https://www.youtube.com/watch?v=Fi2WwRJDii0 as original video
+
+![test1](https://yliuemma.github.io/CS639FALL20website/test-video.gif)
+
+If I choose to apply mark out people in the video, I would get this result:
+![personm](https://yliuemma.github.io/CS639FALL20website/test-videooutpersonm.gif)
+
+If I choose to apply blur on the people in the video, I would get this result:
+![personb](https://yliuemma.github.io/CS639FALL20website/test-videooutpersonb.gif)
 
 ## Discussion
 Obviously I learned about YOLO and OpenCV, and I integrated image processing methods that I learned from CS639. 
