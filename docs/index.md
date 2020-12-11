@@ -213,7 +213,9 @@ If I choose to apply blur on the people in the video, I would get this result:
 
 With just using CPU, the average processing time for each frame is around 0.2 sec, about 5 fps in this implementation.
 
-I have also tried to detect objects in images and process them with PixelLib library that can load in Mask R Cnn model. The average processing time for an image running on the CPU is around 0.7.
+I have also tried to detect objects in images and process them with PixelLib library that can load in Mask R Cnn model. The average processing time for an image running on the CPU is around 2.5 second.
+
+![maskRCNN](https://yliuemma.github.io/CS639FALL20website/maskRCNNUWTEST.jpg)
 
 ## Discussion
 Obviously I learned about YOLO and OpenCV, and I integrated image processing methods that I learned from CS639. 
@@ -222,7 +224,7 @@ I also learned the pros and cons of my approach:
   Pros: It's definitely fast and simple to use. I shared it with my friends who are studying communication arts and they were happy to use it on their finals. One of them is using my program to blur out non-participants in a video recording of a BLM protest that happened on State Street this year.
   Cons: However, it is also essentially less accurate since it splits images into grids instead of instance segmentation. The most you can get from it are the bounding boxes, but you can't really do it on a pixel level with YOLO alone.
 
-In the future I am planning to implement this approach to be both fast and more accurate than just bounding boxes. I am considering applying instance segmentation inside bounding box regions instead of doing it on the whole picture, so you only get to read the bounding boxes multiple times. Taking the image that I use to mark/blur out people as an example, the time it took to record all people's bounding box is around 0.3 seconds, while feeding the image to PixelLib's Mask R Cnn model takes around 0.7 seconds(given that they all just run on CPU). The image's size is 515(height) x 775(width), and the total area of all bounding boxes(which can be easily obtained by adding up all extracted bouding box w x h) that contain detected person is around 5% of the total area of the image. If I apply Mask R Cnn or similar instance segmentation methods on those bounding boxes(detected by YOLO first) instead of applying Mask R Cnn on the full image, I assume the total time would be around 0.335, which is slightly slower than YOLO, but still faster than Mask R Cnn and more accurate than just YOLO. 
+In the future I am planning to implement this approach to be both fast and more accurate than just bounding boxes. I am considering applying instance segmentation inside bounding box regions instead of doing it on the whole picture, so you only get to read the bounding boxes multiple times. Taking the image that I use to mark/blur out people as an example, the time it took to record all people's bounding box is around 0.3 seconds, while feeding the image to PixelLib's Mask R Cnn model takes around 2.5 seconds(given that they all just run on CPU). The image's size is 515(height) x 775(width), and the total area of all bounding boxes(which can be easily obtained by adding up all extracted bouding box w x h) that contain detected person is around 5% of the total area of the image. If I apply Mask R Cnn or similar instance segmentation methods on those bounding boxes(detected by YOLO first) instead of applying Mask R Cnn on the full image, I assume the total time would be around 0.425, which is slower than YOLO, but still faster than Mask R Cnn and more accurate than just YOLO. 
 
 I hope this instance segmentation at smaller scale would improve the accuracy. In the future, I will refer to similar approaches, such as [YolAct](https://github.com/dbolya/yolact) or [Poly-YOLO](https://github.com/gladcolor/poly_yolo).
 
